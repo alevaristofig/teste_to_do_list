@@ -4,16 +4,16 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use App\Http\Requests\ListaTarefaRequest;
-use App\Service\ListaTarefasService;
-use App\Models\ListaTarefa;
+use App\Http\Requests\ListaRequest;
+use App\Service\ListaService;
+use App\Models\Lista;
 
-class ListaTarefaController extends Controller
+class ListaController extends Controller
 {
 
     private $service;
 
-    public function __construct(ListaTarefasService $service) {
+    public function __construct(ListaService $service) {
         $this->service = $service;
     }
 
@@ -36,7 +36,7 @@ class ListaTarefaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ListaTarefaRequest $request): JsonResponse
+    public function store(ListaRequest $request): JsonResponse
     {
         return $this->service->salvar($request);
     }
@@ -60,7 +60,7 @@ class ListaTarefaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ListaTarefaRequest $request, int $id): JsonResponse
+    public function update(ListaRequest $request, int $id): JsonResponse
     {
         return $this->service->atualizar($id, $request);
     }

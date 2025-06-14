@@ -2,17 +2,17 @@
 
     namespace App\Service;
 
-    use App\Repository\ListaTarefasRepository;
-    use App\Http\Requests\ListaTarefaRequest;
+    use App\Repository\ListaRepository;
+    use App\Http\Requests\ListaRequest;
     use Illuminate\Http\JsonResponse;
-    use App\Models\ListaTarefa;
+    use App\Models\Lista;
     use App\Exceptions\ApiMessages;
 
-    class ListaTarefasService implements ListaTarefasRepository {
+    class ListaService implements ListaRepository {
 
         private $model;
 
-        public function __construct(ListaTarefa $model) {
+        public function __construct(Lista $model) {
             $this->model = $model;
         }
 
@@ -34,7 +34,7 @@
             }
         }
 
-        public function salvar(ListaTarefaRequest $request): JsonResponse {
+        public function salvar(ListaRequest $request): JsonResponse {
              try {                
                 return response()->json($this->model->create($request->all()),201);
             } catch(\Exception $e) {
@@ -43,16 +43,16 @@
             }    
         }
 
-        public function atualizar(int $id, ListaTarefaRequest $request): JsonResponse {
+        public function atualizar(int $id, ListaRequest $request): JsonResponse {
             try {
 
-                $listaTarefa = $this->model->find($id);
+                $lista = $this->model->find($id);
 
-                $listaTarefa->titulo = $request->titulo;
+                $lista->titulo = $request->titulo;
 
-                $listaTarefa->save();
+                $lista->save();
 
-                return response()->json($listaTarefa,200);
+                return response()->json($lista,200);
 
             } catch(\Exception $e) {
                  //  $message = new ApiMessages($e->getMessage());
@@ -62,9 +62,9 @@
 
         public function remover(int $id): JsonResponse {
             try {
-                $listaTarefa = $this->model->find($id);
+                $lista = $this->model->find($id);
 
-                $listaTarefa->delete();
+                $lista->delete();
 
                 return response()->json(['message' => "Lista removida com Sucesso"],200);
             } catch(\Exception $e) {
