@@ -13,4 +13,5 @@
         function listar(): Collection;
         function buscar(int $id): JsonResponse;
         function atualizar(int $id, ListaTarefaRequest $request): JsonResponse;
+        function remover(int $id): JsonResponse;
     }

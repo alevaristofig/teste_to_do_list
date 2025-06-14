@@ -60,4 +60,17 @@
                 return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
             }
         }
+
+        public function remover(int $id): JsonResponse {
+            try {
+                $listaTarefa = $this->model->find($id);
+
+                $listaTarefa->delete();
+
+                return response()->json(['message' => "Lista removida com Sucesso"],200);
+            } catch(\Exception $e) {
+                 //  $message = new ApiMessages($e->getMessage());
+                return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
+            }
+        }
     }
