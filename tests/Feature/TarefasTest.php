@@ -6,14 +6,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Mockery;
+use App\Models\Tarefa;
 
 class TarefasTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
+
     public function test_inserirTarefasSucesso(): void
-    {
+    {        
         $dados = [
             'id'=> 1,
             'titulo'=> 'Tarefa Exemplo'
