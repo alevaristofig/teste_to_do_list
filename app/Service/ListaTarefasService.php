@@ -21,7 +21,7 @@
                 return response()->json($this->model->create($request->all()),200);
             } catch(\Exception $e) {
                 $message = new ApiMessages($e->getMessage());
-                return response()->json(['error' => $message->getMessage()], 401);
+                return response()->json(['error' => $message->getMessage()], 500);
             }    
         }
     }
