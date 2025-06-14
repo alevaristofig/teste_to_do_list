@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');        
 
             $table->string('titulo');
-            $table->integer('tempo');
+            $table->string('tempo');
             $table->integer('dificuldade');
 
             $table->timestamps();            

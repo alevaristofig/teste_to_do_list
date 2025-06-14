@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('listas', function (Blueprint $table) {
-            $table->bigIncrements('id');        
+        Schema::create('lista_tarefa', function (Blueprint $table) {
+           $table->unsignedBigInteger('lista_id');
+           $table->unsignedBigInteger('tarefa_id');
 
-            $table->string('titulo');
+           $table->foreign('lista_id')->references('id')->on('listas');
+           $table->foreign('tarefa_id')->references('id')->on('tarefas');
 
-            $table->timestamps();            
+           $table->timestamps();
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lista');
+        //
     }
 };
