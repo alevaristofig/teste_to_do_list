@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\ListaTarefaRequest;
-use App\Service\ListaService;
+use App\Service\ListaTarefaService;
 use App\Models\ListaTarefa;
 
 class ListaTarefaController extends Controller
