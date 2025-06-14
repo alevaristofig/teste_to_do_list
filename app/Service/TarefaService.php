@@ -37,7 +37,7 @@
 
         public function salvar(TarefaRequest $request): JsonResponse {
              try {
-                return response()->json($this->model->create($request->all()),200);
+                return response()->json($this->model->create($request->all()),201);
             } catch(\Exception $e) {
                  //  $message = new ApiMessages($e->getMessage());
                 return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
@@ -57,6 +57,19 @@
 
                 return response()->json($tarefa,200);
 
+            } catch(\Exception $e) {
+                 //  $message = new ApiMessages($e->getMessage());
+                return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
+            }
+        }
+
+        public function remover(int $id): JsonResponse {
+            try {
+                $listaTarefa = $this->model->find($id);
+
+                $listaTarefa->delete();
+
+                return response()->json(['message' => "Tarefa removida com Sucesso"],200);
             } catch(\Exception $e) {
                  //  $message = new ApiMessages($e->getMessage());
                 return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);

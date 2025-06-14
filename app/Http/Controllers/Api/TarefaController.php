@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Database\Eloquent\Collection;
 use App\Http\Requests\TarefaRequest;
 use App\Service\TarefaService;
 use App\Models\Tarefa;
@@ -69,8 +68,8 @@ class TarefaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        return $this->service->remover($id);
     }
 }
