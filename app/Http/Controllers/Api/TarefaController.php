@@ -21,9 +21,9 @@ class TarefaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        return $this->service->listar();
     }
 
     /**

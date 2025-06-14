@@ -17,6 +17,15 @@
             $this->model = $model;
         }
 
+        public function listar(): JsonResponse {
+            try {
+                return response()->json($this->model->all(),200);
+            } catch(\Exception $e) {
+                 //  $message = new ApiMessages($e->getMessage());
+                return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
+            }
+        }
+
         public function salvar(TarefaRequest $request): JsonResponse {
              try {
                 return response()->json($this->model->create($request->all()),200);
