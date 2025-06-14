@@ -28,5 +28,7 @@ class TarefasTest extends TestCase
 
         $this->assertEquals('Tarefa Exemplo',$result->titulo);
         $this->assertEquals(1,$result->id);
+
+        Mockery::close();
     }
 }
