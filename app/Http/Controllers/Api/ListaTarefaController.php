@@ -19,9 +19,9 @@ class ListaTarefaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        return $this->service->listar();
     }
 
     /**
@@ -35,7 +35,7 @@ class ListaTarefaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ListaTarefaRequest $request)
+    public function store(ListaTarefaRequest $request): JsonResponse
     {
         return $this->service->salvar($request);
     }
