@@ -3,10 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Database\Eloquent\Collection;
+use App\Http\Requests\TarefaRequest;
+use App\Service\TarefaService;
+use App\Models\Tarefa;
 
 class TarefaController extends Controller
 {
+    private $service;
+
+    public function __construct(TarefaService $service) {
+        $this->service = $service;
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -26,9 +37,9 @@ class TarefaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(TarefaRequest $request): JsonResponse
+    {        
+        return $this->service->salvar($request);
     }
 
     /**
