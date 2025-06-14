@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Database\Eloquent\Collection;
 use App\Http\Requests\ListaTarefaRequest;
 use App\Service\ListaTarefasService;
 
@@ -19,9 +20,9 @@ class ListaTarefaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Collection
     {
-        //
+        return $this->service->listar();
     }
 
     /**
