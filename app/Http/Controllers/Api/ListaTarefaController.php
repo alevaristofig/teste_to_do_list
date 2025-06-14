@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Database\Eloquent\Collection;
 use App\Http\Requests\ListaTarefaRequest;
 use App\Service\ListaTarefasService;
+use App\Models\ListaTarefa;
 
 class ListaTarefaController extends Controller
 {
@@ -44,9 +45,9 @@ class ListaTarefaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id): ListaTarefa | null
     {
-        //
+        return $this->service->buscar($id);
     }
 
     /**

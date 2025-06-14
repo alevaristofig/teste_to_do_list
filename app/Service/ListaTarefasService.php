@@ -26,6 +26,15 @@
             }
         }
 
+        public function buscar(int $id): ListaTarefa | null {
+            try {
+                return $this->model->find($id);
+            } catch(\Exception $e) {
+                //  $message = new ApiMessages($e->getMessage());
+                return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
+            }
+        }
+
         public function salvar(ListaTarefaRequest $request): JsonResponse {
              try {                
                 return response()->json($this->model->create($request->all()),200);
