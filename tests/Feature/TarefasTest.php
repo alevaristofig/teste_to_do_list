@@ -11,11 +11,12 @@ use App\Models\Tarefa;
 class TarefasTest extends TestCase
 {
 
-    public function test_inserirTarefasSucesso(): void
-    {        
+    public function test_inserirTarefasSucesso(): void {        
         $dados = [
             'id'=> 1,
-            'titulo'=> 'Tarefa Exemplo'
+            'titulo'=> 'Tarefa Exemplo',
+            'tempo' => '1 dia',
+            'dificuldade' => 5
         ];
 
         $mock = Mockery::mock('alias' . Tarefa::class);
@@ -30,5 +31,27 @@ class TarefasTest extends TestCase
         $this->assertEquals(1,$result->id);
 
         Mockery::close();
+    }
+
+    public function test_buscarTarefaSucesso(): void {
+
+        $id = 1;
+        $lista = new \stdClass();
+
+        $lista->id = 1;
+        $lista->titulo = "Buscar Tarefa Exemplo";
+        $lista->tempo = "1 dia";
+        $lista->dificuldade = 5;
+
+        $mock = Mockery::mock('alias:' . Tarefa::class);
+        $mock->shouldReceive('find')
+            ->once()    
+            ->with($id)        
+            ->andReturn($lista);
+
+        $result = Tarefa::find($id);
+
+        $this->assertEquals(1,$result->id);
+        $this->assertEquals('Buscar Tarefa Exemplo',$result->titulo);
     }
 }
