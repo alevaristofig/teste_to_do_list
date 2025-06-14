@@ -85,4 +85,19 @@ class TarefasTest extends TestCase
         $this->assertInstanceOf(Tarefa::class,$result);
         $this->assertEquals("3 dia",$result->tempo);        
     }
+
+    public function test_deletarTarefasSucesso(): void {
+
+        $id = 1;
+        $mock = Mockery::mock('alias:' . Tarefa::class);     
+
+        $mock->shouldReceive('delete')
+            ->once()
+            ->with($id)
+            ->andReturnTrue();
+
+        $result = Tarefa::delete($id);
+       
+        $this->assertTrue($result);                
+    }
 }
