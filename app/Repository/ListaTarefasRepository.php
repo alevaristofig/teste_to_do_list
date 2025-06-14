@@ -7,5 +7,5 @@
 
     interface ListaTarefasRepository {
 
-        function salvar(ListaTarefaRequest $dados): ListaTarefa | bool;
+        function salvar(ListaTarefaRequest $dados): ListaTarefa;
     }
