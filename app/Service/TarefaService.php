@@ -43,4 +43,23 @@
                 return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
             }
         }
+
+        public function atualizar(int $id, TarefaRequest $request): JsonResponse {
+            try {
+
+                $tarefa = $this->model->find($id);
+
+                $tarefa->titulo = $request->titulo;
+                $tarefa->tempo = $request->tempo;
+                $tarefa->dificuldade = $request->dificuldade;
+
+                $tarefa->save();
+
+                return response()->json($tarefa,200);
+
+            } catch(\Exception $e) {
+                 //  $message = new ApiMessages($e->getMessage());
+                return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
+            }
+        }
     }

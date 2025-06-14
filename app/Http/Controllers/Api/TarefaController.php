@@ -61,9 +61,9 @@ class TarefaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TarefaRequest $request, int $id)
     {
-        //
+        return $this->service->atualizar($id, $request);
     }
 
     /**

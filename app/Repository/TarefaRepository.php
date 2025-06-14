@@ -12,6 +12,6 @@
         function salvar(TarefaRequest $request): JsonResponse;
         function listar(): JsonResponse;
         function buscar(int $id): JsonResponse;
-      //  function atualizar(int $id, TarefaRequest $request): JsonResponse;
+        function atualizar(int $id, TarefaRequest $request): JsonResponse;
       //  function remover(int $id): JsonResponse;
     }
