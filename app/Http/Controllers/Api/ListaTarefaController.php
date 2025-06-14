@@ -10,6 +10,12 @@ use App\Models\ListaTarefa;
 
 class ListaTarefaController extends Controller
 {
+    private $service;
+
+    public function __construct(ListaTarefaService $service) {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -29,9 +35,9 @@ class ListaTarefaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ListaTarefaRequest $request)
     {
-        //
+        return $this->service->salvar($request);
     }
 
     /**
