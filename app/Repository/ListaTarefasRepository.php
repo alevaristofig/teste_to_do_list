@@ -11,5 +11,6 @@
 
         function salvar(ListaTarefaRequest $request): JsonResponse;
         function listar(): Collection;
-        function buscar(int $id): ListaTarefa | null;
+        function buscar(int $id): JsonResponse;
+        function atualizar(int $id, ListaTarefaRequest $request): JsonResponse;
     }

@@ -26,9 +26,9 @@
             }
         }
 
-        public function buscar(int $id): ListaTarefa | null {
+        public function buscar(int $id): JsonResponse {
             try {
-                return $this->model->find($id);
+                return response()->json($this->model->find($id),200);                
             } catch(\Exception $e) {
                 //  $message = new ApiMessages($e->getMessage());
                 return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
@@ -42,5 +42,22 @@
               //  $message = new ApiMessages($e->getMessage());
                 return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
             }    
+        }
+
+        public function atualizar(int $id, ListaTarefaRequest $request): JsonResponse {
+            try {
+
+                $listaTarefa = $this->model->find($id);
+
+                $listaTarefa->titulo = $request->titulo;
+
+                $listaTarefa->save();
+
+                return response()->json($listaTarefa,200);
+
+            } catch(\Exception $e) {
+                 //  $message = new ApiMessages($e->getMessage());
+                return response()->json(['error' => $e->getMessage() /*$message->getMessage()*/], 500);
+            }
         }
     }

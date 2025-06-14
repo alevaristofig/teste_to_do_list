@@ -45,7 +45,7 @@ class ListaTarefaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id): ListaTarefa | null
+    public function show(int $id): JsonResponse
     {
         return $this->service->buscar($id);
     }
@@ -61,9 +61,9 @@ class ListaTarefaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ListaTarefaRequest $request, int $id): JsonResponse
     {
-        //
+        return $this->service->atualizar($id, $request);
     }
 
     /**
