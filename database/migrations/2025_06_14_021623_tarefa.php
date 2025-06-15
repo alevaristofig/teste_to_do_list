@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('tempo');
             $table->integer('dificuldade');
+            $table->string('completa',1);
 
             $table->timestamps();            
         });

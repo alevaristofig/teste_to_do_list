@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tarefa extends Model
 {
     protected $fillable = [
-        'titulo', 'tempo', 'dificuldade'
+        'titulo', 'tempo', 'dificuldade', 'completa'
     ];
 
     public function listas(): BelongsToMany {
