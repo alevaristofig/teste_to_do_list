@@ -52,6 +52,7 @@
                 $tarefa->titulo = $request->titulo;
                 $tarefa->tempo = $request->tempo;
                 $tarefa->dificuldade = $request->dificuldade;
+                $tarefa->completa = $request->completa;
 
                 $tarefa->save();
 
