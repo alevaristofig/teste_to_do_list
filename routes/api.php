@@ -13,23 +13,9 @@ Route::get('/user', function (Request $request) {
 Route::prefix('v1/todo')->group(function() {
 
     Route::group([
-        'as' => 'listas'
-        //'middleware'=> \Tymon\JWTAuth\Http\Middleware\Authenticate::class
-        ], function() {       
-        Route::resource('listas',ListaController::class);
-    });
-
-    Route::group([
         'as' => 'tarefas'
         //'middleware'=> \Tymon\JWTAuth\Http\Middleware\Authenticate::class
         ], function() {       
         Route::resource('tarefas',TarefaController::class);
-    });
-
-     Route::group([
-        'as' => 'listatarefas'
-        //'middleware'=> \Tymon\JWTAuth\Http\Middleware\Authenticate::class
-        ], function() {       
-        Route::resource('listatarefas',ListaTarefaController::class);
     });
 });
